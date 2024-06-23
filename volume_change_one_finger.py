@@ -61,11 +61,6 @@ while True:
             distance_frame = distance(lmList)
             length = distance_frame * distance_frame * length / 3200
 
-            print(
-                int(np.interp(length, [25, 220], [0, 100])),
-                distance_frame,
-            )
-
             if length < 25:
                 cv2.circle(
                     img,
