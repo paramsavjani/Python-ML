@@ -78,7 +78,6 @@ while True:
 
             # volume range -144 to 0
             # our hand range is 25 to 250
-            print(length)
             vol = np.interp(length, [35, 220], [-55, maxvol])
             if vol <= -54:
                 vol = minvol
