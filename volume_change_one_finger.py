@@ -63,7 +63,7 @@ while True:
             distance_frame = distance(lmList[0])
             length = distance_frame * distance_frame * length / 3200
 
-            if length < 25:
+            if length < 35:
                 cv2.circle(
                     img,
                     (int((x1 + x2) / 2), int((y1 + y2) / 2)),
@@ -78,7 +78,8 @@ while True:
 
             # volume range -144 to 0
             # our hand range is 25 to 250
-            vol = np.interp(length, [25, 220], [-55, maxvol])
+            print(length)
+            vol = np.interp(length, [35, 220], [-55, maxvol])
             if vol <= -54:
                 vol = minvol
             fingers = detelctor.fingersUp()
