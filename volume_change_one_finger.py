@@ -28,15 +28,16 @@ pTime = 0
 detelctor = htm.HandDetector(detectionCon=0.7)
 
 
-def distance(lmlist):
+def distance(lmList):
     # Find Function
     # x is the raw distance y is the value in cm
     x = [300, 245, 200, 170, 145, 130, 112, 103, 93, 87, 80, 75, 70, 67, 62, 59, 57]
     y = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
     coff = np.polyfit(x, y, 2)  # y = Ax^2 + Bx + C
+    print(coff)
 
-    x1, y1 = lmList[0][5][1], lmList[0][5][2]
-    x2, y2 = lmList[0][17][1], lmList[0][17][2]
+    x1, y1 = lmList[5][1], lmList[5][2]
+    x2, y2 = lmList[17][1], lmList[17][2]
 
     distance = int(math.sqrt((y2 - y1) ** 2 + (x2 - x1) ** 2))
     A, B, C = coff
@@ -57,8 +58,10 @@ while True:
             x2, y2 = lmList[0][8][1], lmList[0][8][2]
 
             length = math.hypot(x2 - x1, y2 - y1)
+            
             # here we want to convert the length to cm by distance function
-            distance_frame = distance(lmList)
+            
+            distance_frame = distance(lmList[0])
             length = distance_frame * distance_frame * length / 3200
 
             if length < 25:
