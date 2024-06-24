@@ -28,6 +28,7 @@ while True:
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
     success, img = cap.read()
+    img = cv2.flip(img, 1)
     img, faces = detector.findFaceMesh(img, draw=False)
     if faces:
         face = faces[0]
@@ -62,7 +63,7 @@ while True:
                 counter = 0
                 color = (255, 0, 255)
 
-        cvzone.putTextRect(img, f"Blink Count: {blinkCounter}", (50, 100), colorR=color)
+        cvzone.putTextRect(img, f"Blink Count: {blinkCounter}", (40, 100), colorR=color)
 
         imgPlot = plotY.update(ratio, color)
         img = cv2.resize(img, (640, 400))
