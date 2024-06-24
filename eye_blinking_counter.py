@@ -6,7 +6,7 @@ from cvzone.PlotModule import LivePlot
 
 
 cap = cv2.VideoCapture(0)
-# cap = cv2.VideoCapture("./video.mp4")
+cap = cv2.VideoCapture("./video.mp4")
 detector = fm.FaceMeshDetector(maxFaces=2)
 plotY = LivePlot(640, 480, [20, 50], invert=True, char=" ")
 
@@ -20,7 +20,7 @@ ratioList = []
 blinkCounter = 0
 counter = 0
 color = (255, 0, 255)
-
+flag = False
 
 while True:
 
@@ -53,15 +53,13 @@ while True:
 
         ratioAvg = sum(ratioList) / len(ratioList)
 
-        if ratioAvg < 35 and counter == 0:
-            blinkCounter += 1
+        if ratioAvg < 35 and not flag:
+            flag = True
             color = (0, 200, 0)
-            counter = 1
-        if counter != 0:
-            counter += 1
-            if counter > 10:
-                counter = 0
-                color = (255, 0, 255)
+        elif ratioAvg >= 35 and flag:
+            flag = False
+            blinkCounter += 1
+            color = (200, 0, 0)
 
         cvzone.putTextRect(img, f"Blink Count: {blinkCounter}", (40, 100), colorR=color)
 
