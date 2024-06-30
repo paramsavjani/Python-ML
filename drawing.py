@@ -21,7 +21,6 @@ def getHandInfo(img):
         hand = hands[0]
 
         fingers = detector.fingersUp(hand)
-        print(fingers)
         lmList = hand["lmList"]
         return fingers, lmList
     else:

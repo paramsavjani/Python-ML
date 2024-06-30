@@ -126,8 +126,6 @@ def main():
         img = detector.findHands(img)
         lmList, bbox = detector.findPosition(img)
 
-        if lmList:
-            print(lmList[4])
 
         cTime = time.time()
         fps = 1 / (cTime - pTime)

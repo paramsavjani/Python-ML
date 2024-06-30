@@ -4,20 +4,20 @@ import numpy as np
 import time
 import HandTrackingModule_My as htm
 
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+# from comtypes import CLSCTX_ALL
+# from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 
 hcam = 640
 wcam = 480
 
 
-devices = AudioUtilities.GetSpeakers()
-interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-volume = interface.QueryInterface(IAudioEndpointVolume)
-volRange = volume.GetVolumeRange()
-minvol = volRange[0]
-maxvol = volRange[1]
+# devices = AudioUtilities.GetSpeakers()
+# interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+# volume = interface.QueryInterface(IAudioEndpointVolume)
+# volRange = volume.GetVolumeRange()
+# minvol = volRange[0]
+# maxvol = volRange[1]
 
 
 cap = cv2.VideoCapture(0)
@@ -78,12 +78,12 @@ while True:
 
             # volume range -144 to 0
             # our hand range is 25 to 250
-            vol = np.interp(length, [35, 220], [-55, maxvol])
-            if vol <= -54:
-                vol = minvol
-            fingers = detelctor.fingersUp()
-            if fingers[4] == 0:
-                volume.SetMasterVolumeLevel(vol, None)
+            # vol = np.interp(length, [35, 220], [-55, maxvol])
+            # if vol <= -54:
+            #     vol = minvol
+            # fingers = detelctor.fingersUp()
+            # if fingers[4] == 0:
+            #     volume.SetMasterVolumeLevel(vol, None)
 
             cv2.putText(
                 img,
