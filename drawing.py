@@ -54,7 +54,7 @@ def erase(info, canvas, img):
     )
 
     cv2.circle(canvas, center, radius, (0, 0, 0), -1)
-    cv2.circle(img, center, radius, (0, 0, 0), cv2.FILLED)
+    cv2.circle(img, center, radius, (0, 255, 0), cv2.FILLED)
 
     return canvas
 
