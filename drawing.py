@@ -13,6 +13,7 @@ cap.set(3, wcam)
 detector = HandDetector(detectionCon=0.7, maxHands=1)
 
 
+
 def getHandInfo(img):
     hands, img = detector.findHands(img, draw=False)
 
