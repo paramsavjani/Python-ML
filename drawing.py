@@ -3,11 +3,11 @@ import cv2
 from cvzone.HandTrackingModule import HandDetector
 import numpy as np
 
-hcam = 1200
+hcam = 1800
 wcam = 1080
 
 cap = cv2.VideoCapture(0)
-cap.set(4, hcam)
+cap.set(6, hcam)
 cap.set(3, wcam)
 
 detector = HandDetector(detectionCon=0.7, maxHands=1)
